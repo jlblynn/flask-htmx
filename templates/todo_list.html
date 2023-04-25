@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="todo-container">
+        {% for todo in todos %}
+            <div id="todo-{{ todo.id }}">
+                <p>{{ todo.text }}</p>
+                <form method="POST" hx-delete="/" hx-target="#todo-container">
+                    <input type="hidden" name="todo_id" value="{{ todo.id }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
